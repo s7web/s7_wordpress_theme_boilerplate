@@ -16,3 +16,5 @@ wp_nav_menu( array(
     'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
     'walker'          => new WP_Bootstrap_Navwalker(),
 ) ); -->
+
+Enabled theme support for features Menu, Title tag, Post thumbnails, 
