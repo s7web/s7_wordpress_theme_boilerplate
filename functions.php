@@ -30,7 +30,7 @@ add_action( 'after_setup_theme', 'register_navwalker' );
 function load_css(){
 
     //register styles
-    wp_register_style( 'bootstrapmin', get_template_directory_uri() . 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', array(), '4.4.1', 'all' );
+    wp_register_style( 'bootstrapmin', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', array(), '4.4.1', 'all' );
     wp_register_style( 'customcss', get_template_directory_uri() . '/css/custom.css', array(), '1.0.0', 'all' );
         //wp_register_style( 'bootstraptheme', get_template_directory_uri() . '/css/bootstrap-theme.min.css', array(), '3.3.7', 'all' );
     
@@ -49,9 +49,9 @@ function load_js(){
     wp_enqueue_script( 'jquery');
 
     //register script
-    wp_register_script( 'popperjs', get_template_directory_uri() . 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', 'jquery', '1.16.0', true );
-    wp_register_script( 'bootstrapjs', get_template_directory_uri() . 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', array(), false, true );
-    wp_register_script( 'customjs', get_template_directory_uri() . get_template_directory_uri() . '/js/custom.js', array(), false, true );
+    wp_register_script( 'popperjs', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', 'jquery', '1.16.0', true );
+    wp_register_script( 'bootstrapjs', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', array(), false, true );
+    wp_register_script( 'customjs', get_template_directory_uri() . '/js/custom.js', array(), false, true );
 
     //enqueue registered scripts
     wp_enqueue_script( 'popperjs');
