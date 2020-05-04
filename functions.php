@@ -86,3 +86,8 @@ add_theme_support( 'post-thumbnails');
 add_theme_support( 'widgets');
 //add theme support for Yoast plugin
 add_theme_support( 'yoast-seo-breadcrumbs' );
+
+/**
+ * ADMIN PAGE SETUP
+ */
+require_once get_template_directory() . '/inc/functions-admin.php';
