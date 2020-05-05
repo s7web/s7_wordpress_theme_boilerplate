@@ -1,4 +1,7 @@
-<h1> S7 Theme Options</h1>
-<h3 class="s7-admin-title">Manage Options</h3>
-<p>Customize the default WP Appereance Options</p>
-<?php bloginfo('name'); ?>
+<h1>S7design Theme Options</h1>
+<?php settings_errors(); ?>
+<form method="post" action="options.php">
+	<?php settings_fields( 's7design-settings-group' ); ?>
+	<?php do_settings_sections( 's7design_option' ); ?>
+	<?php submit_button(); ?>
+</form>
