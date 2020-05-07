@@ -13,7 +13,7 @@ add_action( 'after_setup_theme', 's7design_theme_setup' );
  */
 function s7design_theme_setup() {
 
-
+    add_image_size( 'my-custom-size', 220, 180, true );
 }
 
 /**
@@ -105,11 +105,29 @@ add_theme_support( 'widgets');
 add_theme_support( 'yoast-seo-breadcrumbs' );
 
 /**
+ * Add support for core custom logo.
+ *
+ * @link https://codex.wordpress.org/Theme_Logo
+ */
+add_theme_support( 'custom-logo', array(
+    'height'      => 150,
+    'width'       => 150,
+    'flex-width'  => true,
+    'flex-height' => true,
+) );
+
+/**
  * ADMIN PAGE SETUP
  */
+require_once get_template_directory() . '/inc/functions/admin-setup.php';
 require_once get_template_directory() . '/inc/functions/functions-admin.php';
 
+/* HELPERS */
+require_once get_template_directory() . '/inc/functions/helpers.php';
+
+/* LIBRARY SETUP FOR CUSTOMIZER REPEATER FIELDS */
 include_once get_theme_file_path( 'inc/class-kirki-installer-section.php' );
 
 
-require_once get_template_directory() . '/inc/functions/admin-setup.php';
+/*  CUSTOMIZERS */
+require_once get_template_directory() . '/inc/customizer/header-panel.php';
