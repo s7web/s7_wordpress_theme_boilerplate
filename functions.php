@@ -90,4 +90,9 @@ add_theme_support( 'yoast-seo-breadcrumbs' );
 /**
  * ADMIN PAGE SETUP
  */
-require_once get_template_directory() . '/inc/functions-admin.php';
+require_once get_template_directory() . '/inc/functions/functions-admin.php';
+
+include_once get_theme_file_path( 'inc/class-kirki-installer-section.php' );
+
+
+require_once get_template_directory() . '/inc/functions/admin-setup.php';
