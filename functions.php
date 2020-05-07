@@ -20,7 +20,7 @@ function s7design_theme_setup() {
  * Register Custom Navigation Walker
  */
 function register_navwalker(){
-	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+	require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
 }
 add_action( 'after_setup_theme', 'register_navwalker' );
 
@@ -33,7 +33,9 @@ function load_css(){
     $css_library = get_option('css_library');
     if( $css_library === 'materialize' ) {
         wp_register_style( 'materializecss', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css', array(), '1.0.0', 'all' );
+        wp_register_style( 'materializecss-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), '1.0.0', 'all' );
         wp_enqueue_style( 'materializecss' );
+        wp_enqueue_style( 'materializecss-icons' );
     } else {
         wp_register_style( 'bootstrapmin', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', array(), '4.4.1', 'all' );
         wp_enqueue_style( 'bootstrapmin' );

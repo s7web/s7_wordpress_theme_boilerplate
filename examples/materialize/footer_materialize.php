@@ -1,7 +1,10 @@
 <?php
 /**
  * Template : Footer
- *
+ * 
+ * If you check Materialize libary in S7 Theme Option,
+ *  replace this code in footer.php file
+ * 
  * @package S7design
  */
 ?>
