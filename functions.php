@@ -28,14 +28,22 @@ add_action( 'after_setup_theme', 'register_navwalker' );
 //funtion for registering CSS files included bootstrap 4.4
 
 function load_css(){
-
+    
     //register styles
-    wp_register_style( 'bootstrapmin', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', array(), '4.4.1', 'all' );
+    $css_library = get_option('css_library');
+    if( $css_library === 'materialize' ) {
+        wp_register_style( 'materializecss', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css', array(), '1.0.0', 'all' );
+        wp_enqueue_style( 'materializecss' );
+    } else {
+        wp_register_style( 'bootstrapmin', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', array(), '4.4.1', 'all' );
+        wp_enqueue_style( 'bootstrapmin' );
+    }
+   
     wp_register_style( 'customcss', get_template_directory_uri() . '/css/custom.css', array(), '1.0.0', 'all' );
         //wp_register_style( 'bootstraptheme', get_template_directory_uri() . '/css/bootstrap-theme.min.css', array(), '3.3.7', 'all' );
     
     //enqueue registerd styles
-    wp_enqueue_style( 'bootstrapmin' );
+   
     wp_enqueue_style( 'customcss' );
 }
 
@@ -49,13 +57,22 @@ function load_js(){
     wp_enqueue_script( 'jquery');
 
     //register script
-    wp_register_script( 'popperjs', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', 'jquery', '1.16.0', true );
-    wp_register_script( 'bootstrapjs', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', array(), false, true );
+    $css_library = get_option('css_library');
+    if( $css_library === 'materialize' ) {
+        wp_register_script( 'materializejs', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', 'jquery', '1.0.0', true );
+        wp_enqueue_script( 'materializejs');
+     
+    } else {
+        wp_register_script( 'popperjs', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', 'jquery', '1.16.0', true );
+        wp_register_script( 'bootstrapjs', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', array(), false, true );
+        wp_enqueue_script( 'popperjs');
+        wp_enqueue_script( 'bootstrapjs');
+    }
+  
     wp_register_script( 'customjs', get_template_directory_uri() . '/js/custom.js', array(), false, true );
 
     //enqueue registered scripts
-    wp_enqueue_script( 'popperjs');
-    wp_enqueue_script( 'bootstrapjs');
+
     wp_enqueue_script( 'customjs');
 }
 
