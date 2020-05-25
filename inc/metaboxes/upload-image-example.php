@@ -27,10 +27,6 @@ function s7design_image_uploader_field( $name, $value = '') {
 
     if( $image_attributes = wp_get_attachment_image_src( $value, $image_size ) ) {
         
-          print_r($value);
-          echo "<br />";
-          print_r($image_attributes);
-
         // $image_attributes[0] - image URL
         // $image_attributes[1] - image width
         // $image_attributes[2] - image height
