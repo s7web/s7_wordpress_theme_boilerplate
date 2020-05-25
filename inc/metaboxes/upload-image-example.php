@@ -1,5 +1,9 @@
 <?php 
-
+/**
+ * Upload image 
+ *
+ * @package s7design
+ */
 
 function s7design_include_myuploadscript() {
     /*
@@ -16,12 +20,16 @@ function s7design_include_myuploadscript() {
 
 add_action( 'admin_enqueue_scripts', 's7design_include_myuploadscript' );
 
-function misha_image_uploader_field( $name, $value = '') {
+function s7design_image_uploader_field( $name, $value = '') {
     $image = ' button">Upload image';
     $image_size = 'full'; // it would be better to use thumbnail size here (150x150 or so)
     $display = 'none'; // display state ot the "Remove image" button
 
     if( $image_attributes = wp_get_attachment_image_src( $value, $image_size ) ) {
+        
+          print_r($value);
+          echo "<br />";
+          print_r($image_attributes);
 
         // $image_attributes[0] - image URL
         // $image_attributes[1] - image width
@@ -59,7 +67,7 @@ function s7design_meta_box_add() {
  */
 function s7design_print_box( $post ) {
     $meta_key = 'second_featured_img';
-    echo misha_image_uploader_field( $meta_key, get_post_meta($post->ID, $meta_key, true) );
+    echo s7design_image_uploader_field( $meta_key, get_post_meta($post->ID, $meta_key, true) );
 }
 
 /*

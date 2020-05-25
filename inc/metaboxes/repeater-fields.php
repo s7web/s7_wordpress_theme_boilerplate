@@ -3,16 +3,6 @@
 /* 
    EXAMPLE OF  REGISTER META BOX WITH REPEATER FIELDS
 */
-function s7design_meta_boxes_get_meta( $value ) {
-	global $post;
-
-	$field = get_post_meta( $post->ID, $value, true );
-	if ( ! empty( $field ) ) {
-		return is_array( $field ) ? stripslashes_deep( $field ) : stripslashes( wp_kses_decode_entities( $field ) );
-	} else {
-		return false;
-	}
-}
 
 function s7design_meta_boxes_add_meta_box() {
 	add_meta_box(
@@ -30,8 +20,8 @@ function s7design_meta_boxes_html( $post) {
 	wp_nonce_field( '_s7design_meta_boxes_nonce', 's7design_meta_boxes_nonce' ); ?>
 
 	<?php  
-	$names =  s7design_meta_boxes_get_meta( 's7design_meta_boxes_add_name' );
-	$descriptions =  s7design_meta_boxes_get_meta( 's7design_meta_boxes_add_description' );
+	
+	$users =  s7_get_serialized_fields('s7design_meta_users');
 
 	// Settings that we'll pass to wp_editor
 	$args = array (
@@ -42,33 +32,37 @@ function s7design_meta_boxes_html( $post) {
 	?>
 		<div class="form-apend">
 	<?php 
-	if(is_array($names) && count($names) !== 0)  {
-		foreach($names as $key => $name) {
+	if(is_array($users) && count($users) !== 0)  {
+		foreach($users as $key => $user) {
 			?>
-			<div>
+			<div class="s7design-item-fields">
                 <p>
                     <label for="s7design_meta_boxes_add_name"><?php _e( 'Add Name', 's7design_meta_boxes' ); ?></label><br>
-                    <input style="min-width:300px; margin-right:10px;" type="text" name="s7design_meta_boxes_add_name[]" value="<?php echo $name; ?>">
+                    <input style="min-width:300px; margin-right:10px;" type="text" name="s7design_meta_users[<?php echo $key; ?>][name]" value="<?php echo $users[$key]['name']; ?>">
                 </p>
                     <p>
                     <label for="s7design_meta_boxes_add_description"><?php _e( 'Add Description', 's7design_meta_boxes' ); ?></label><br>
-                    <?php wp_editor( $descriptions[$key], "s7design_meta_boxes_add_description[]", $args ); ?>
+                    <?php // wp_editor( $user[$key]['description'], "s7design_meta_users[]['description']", $args ); ?>
+					<textarea  name="s7design_meta_users[<?php echo $key; ?>][description]" ><?php echo $user['description']; ?> </textarea>
                 </p>
             
                 <span onclick="removeItem(this)" data-remove="<?php echo  $key; ?>" style="padding:6px 9px; border:1px solid #ccc; height:20px; margin-left:6px; margin-top:32px;" >X</span>
-			</div><hr />
+			</div>
 		<?php
 		}
 		}  else {
 			?> 
+			<div class="s7design-item-fields">
 			<p>
 				<label for="s7design_meta_boxes_add_name"><?php _e( 'Add Name', 's7design_meta_boxes' ); ?></label><br>
-				<input type="text" name="s7design_meta_boxes_add_name[]"  value="">
+				<input type="text" name="s7design_meta_users[0][name]"  value="">
 			</p>	<p>
 				<label for="s7design_meta_boxes_add_description"><?php _e( 'Add Description', 's7design_meta_boxes' ); ?></label><br>
-				<?php wp_editor( '', 's7design_meta_boxes_add_description[]', $args ); ?>
+				
+				<textarea   name="s7design_meta_users[0][description]" > </textarea >
 			</p>
             <span class="remove-item" onclick="removeItem(this)" style="padding:6px 9px; border:1px solid #ccc; height:20px; margin-left:6px; margin-top:26px;" >X</span>
+			</div>
 			<?php
 			
 	}
@@ -83,16 +77,20 @@ function s7design_meta_boxes_html( $post) {
 		  e.preventDefault()
 		//window.send_to_editor = function(html) {
 			const resForm = jQuery('.form-apend');
+			const itemFields = document.querySelectorAll('.s7design-item-fields');
+			console.log(itemFields.length);
+
+			let nextfield =  itemFields.length;
 			const res = jQuery('.empty-name-form').css({display:'block'});
 			resForm.append(`	
-			<div>
+			<div class="s7design-item-fields">
 			<p>
 		  <label for="s7design_meta_boxes_add_name"><?php _e( 'Add Name', 's7design_meta_boxes' ); ?></label><br>
-		  <input type="text" name="s7design_meta_boxes_add_name[]"  value="">
+		  <input type="text" name="s7design_meta_users[${nextfield}][name]"  value="">
         </p>
       	<p>
 		  <label for="s7design_meta_boxes_add_description"><?php _e( 'Add Description', 's7design_meta_boxes' ); ?></label><br>
-		  <?php wp_editor( '', 's7design_meta_boxes_add_description', $args ); ?>
+		  <textarea name="s7design_meta_users[${nextfield}][description]" > </textarea >
 	     </p>
 	  
 	 
@@ -103,7 +101,6 @@ function s7design_meta_boxes_html( $post) {
 
 	  }); // End on click
 	 
-
 	  function removeItem(e) {
 		  e.parentNode.remove();
 	  }
@@ -119,10 +116,9 @@ function s7design_meta_boxes_save( $post_id ) {
 	if ( ! current_user_can( 'edit_post', $post_id ) ) return;
    
 
-	$name = array_map( 'esc_attr', $_POST['s7design_meta_boxes_add_name'] );
-    $description = array_map( 'esc_attr', $_POST['s7design_meta_boxes_add_description'] );
-    
-    update_post_meta( $post_id, 's7design_meta_boxes_add_name',  $name  );
-    update_post_meta( $post_id, 's7design_meta_boxes_add_description', $description );
+	$users = serialize($_POST['s7design_meta_users'] );
+
+	update_post_meta( $post_id, 's7design_meta_users',  $users  );
+
 }
 add_action( 'save_post', 's7design_meta_boxes_save' );
