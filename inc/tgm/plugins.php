@@ -76,7 +76,7 @@ function s7design_register_required_plugins() {
         array(
             'name'               => 'Contact Form 7',
             'slug'               => 'contact-form-7',
-            'required'           => true,
+            'required'           => false,
             'description'        => 'Just another contact form plugin. Simple but flexible.',
             'force_activation'   => true,
             'demo_required'      => true

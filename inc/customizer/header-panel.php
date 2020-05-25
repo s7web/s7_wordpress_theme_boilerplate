@@ -8,7 +8,7 @@ function s7design_slider_sanitize( $value ) {
 
 }
 	
-function S7design_header_settings_fucntion( $wp_customize ){
+function s7design_header_settings_fucntion( $wp_customize ){
 
 	
 	/* NEWS SETTINGS */
@@ -90,7 +90,7 @@ function S7design_header_settings_fucntion( $wp_customize ){
 			
 
 }
-add_action( 'customize_register', 'S7design_header_settings_fucntion' );
+add_action( 'customize_register', 's7design_header_settings_fucntion' );
 
 function radon_get_post_category(){
 
