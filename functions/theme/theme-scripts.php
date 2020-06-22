@@ -30,7 +30,7 @@ function load_js(){
     wp_enqueue_script( 'bootstrapjs');
     */
   
-    wp_register_script( 's7design-customjs', get_template_directory_uri() . '/js/theme/main.js', array(), false, true );
+    wp_register_script( 's7design-customjs', get_template_directory_uri() . '/dist/js/frontend-build.js', array(), false, true );
 
     //enqueue registered scripts
 

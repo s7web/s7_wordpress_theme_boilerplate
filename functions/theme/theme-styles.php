@@ -27,7 +27,7 @@ function load_css(){
         wp_enqueue_style( 'bootstrapmin' );
      */
    
-    wp_register_style( 'customcss', get_template_directory_uri() . '/css/theme/main.css', array(), '1.0.0', 'all' );
+    wp_register_style( 'customcss', get_template_directory_uri() . '/dist/css/frontend.min.css', array(), '1.0.0', 'all' );
         //wp_register_style( 'bootstraptheme', get_template_directory_uri() . '/css/bootstrap-theme.min.css', array(), '3.3.7', 'all' );
     
     //enqueue registerd styles

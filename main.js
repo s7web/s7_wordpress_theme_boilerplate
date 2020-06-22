@@ -97,14 +97,25 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./scss
 
 /***/ }),
 
-/***/ 0:
+/***/ "./scss/dashboard.scss":
 /*!*****************************!*\
-  !*** multi ./scss/app.scss ***!
+  !*** ./scss/dashboard.scss ***!
   \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! ./scss/app.scss */\"./scss/app.scss\");\n\n\n//# sourceURL=webpack:///multi_./scss/app.scss?");
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./scss/dashboard.scss?");
+
+/***/ }),
+
+/***/ 0:
+/*!***************************************************!*\
+  !*** multi ./scss/app.scss ./scss/dashboard.scss ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("__webpack_require__(/*! ./scss/app.scss */\"./scss/app.scss\");\nmodule.exports = __webpack_require__(/*! ./scss/dashboard.scss */\"./scss/dashboard.scss\");\n\n\n//# sourceURL=webpack:///multi_./scss/app.scss_./scss/dashboard.scss?");
 
 /***/ })
 
