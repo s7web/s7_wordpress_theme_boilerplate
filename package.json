@@ -8,8 +8,9 @@
   },
   "scripts": {
     "build": "webpack --mode development",
-    "dist": "webpack --mode production",
-    "watch": "webpack --watch --mode development"
+    "dev": "webpack --watch --mode development",
+    "production": "webpack --mode production"
+ 
   },
   "repository": {
     "type": "git",
