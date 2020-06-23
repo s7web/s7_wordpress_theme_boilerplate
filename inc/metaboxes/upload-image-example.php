@@ -15,7 +15,7 @@ function s7design_include_myuploadscript() {
         wp_enqueue_media();
     }
 
-    wp_enqueue_script( 'myuploadscript', get_stylesheet_directory_uri() . '/js/admin/metaboxes.js', array('jquery'), null, false );
+    wp_enqueue_script( 'myuploadscript', get_stylesheet_directory_uri() . '/assets/js/admin/scripts/metaboxes.js', array('jquery'), null, false );
 }
 
 add_action( 'admin_enqueue_scripts', 's7design_include_myuploadscript' );

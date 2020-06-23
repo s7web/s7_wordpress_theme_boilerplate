@@ -9,6 +9,9 @@
    |  |- js/
    |  |- sass/
    |- dist/
+   |- examples/
+   |  |- bootstrap/
+   |  |- materialize/
    |- functions/
    |  |- admin/
    |     |- admin-scripts.php
@@ -20,6 +23,13 @@
    |     |- theme-style.php
    |  |- helpers/
    |- inc/
+   |  |- customizer/
+   |  |- metaboxes/
+   |  |- plugins/
+   |  |- plugins/
+   |  |- posttypes/
+   |  |- tgm/
+   |  |- class-kirki-installer-section.php
    |- includes/
    |- template-parts/
    |- function.php
@@ -38,7 +48,7 @@
   
   *  Prepare for production: 
    
-     ``` npm run build ```
+     ``` npm run production ```
 
      this command wil bind and minify all files js and sass files
 
@@ -48,10 +58,25 @@
   * in the file  ```/assets/sass/app.scss``` include other scss files that you want to be compailed on fronted.
   * for customize dashboard style include scss files in ```/ assets/sass/dashboard.scss``` file
   
+  ***You have three options how to include css library:*** 
+  1) CDN :
   * if you want to register new css library for ***frontend***, you have to register it in file ``` /functions/themes/theme-style.php```
 
-  * if You want to add new library style in ***dashboard***, register new file in file:
-  ``` /functions/admin/admin-style.php```
+  * if You want to add new library style in ***dashboard***.
+  2) Include library using npm:
+   
+      First you have to install library: ```npm install bootstrap```  and include it in file
+   ```/assets/sass/app.scss``` or ```/assets/sass/dashboard.scss``` . 
+   1) Use  Locally: 
+      You can see example in folder  ```/assets/sass/materialize/``` 
+     
+
+      ***Notice!***
+
+       * Don't forget to register JS for choosen css library in the file  ```/functions/themes/theme-script.php``` 
+       *  2 and 3 points are more appropriate for customize library
+       example: 
+       https://getbootstrap.com/docs/4.0/getting-started/theming/
 
 ### SCRIPTS: 
  * import all your frontend scripts into ```/assets/js/theme/indes.js``` and , scripts for dashboard import  into  ```/assets/js/admin/indes.js``` file
@@ -67,8 +92,8 @@
 Bootstrap 4.4.1
 Popper.js 1.16.0
 
-#Nav Walekr menu
-
+## Nav Walekr menu
+```
 wp_nav_menu( array(
     'theme_location'  => 'primary',
     'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
@@ -79,5 +104,5 @@ wp_nav_menu( array(
     'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
     'walker'          => new WP_Bootstrap_Navwalker(),
 ) ); -->
-
+```
 Enabled theme support for features Menu, Title tag, Post thumbnails, 

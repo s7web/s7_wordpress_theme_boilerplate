@@ -10,7 +10,6 @@
     "build": "webpack --mode development",
     "dev": "webpack --watch --mode development",
     "production": "webpack --mode production"
- 
   },
   "repository": {
     "type": "git",
@@ -35,6 +34,7 @@
     "uglifyjs-webpack-plugin": "^2.2.0"
   },
   "dependencies": {
+    "bootstrap": "^4.5.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
   }

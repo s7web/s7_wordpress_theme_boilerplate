@@ -2,6 +2,7 @@ jQuery(function($){
     /*
      * Select/Upload image(s) event
      */
+
     $('body').on('click', '.s7design_upload_image_button', function(e){
         e.preventDefault();
             var button = $(this),

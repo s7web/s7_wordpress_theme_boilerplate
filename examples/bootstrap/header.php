@@ -1,6 +1,6 @@
 <?php
 /**
- * Template : Header
+ * Template : Header Bootstrap
  *
  * @package S7design
  */
@@ -29,40 +29,37 @@
 </head>
 <body>
 <header>
-	<nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="nav-wrapper container">
 		<?php 
 		$logo = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'thumbnail' );
 		if($logo) { 
 		?>
 
-			<a href="#!" class="brand-logo" style="top:7px;">
+			<a href="#!" class="navbar-brand" style="top:7px;">
 			<img style="height:50px;" src="<?php  echo $logo[0]; ?>"> 
 			</a>
 		<?php } ?>
-		<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
-		<?php
-		wp_nav_menu( array(
-		'theme_location' => 'top-menu-global-page',
-		'menu_id'        => 'main-menu',
-		'menu_class'        => 'right hide-on-med-and-down',
-		) );
-		?>
-		
-		</div>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<?php
+			
+					wp_nav_menu( array(
+						'theme_location'  => 'top-menu-global-page',
+						'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
+						'container'       => 'div',
+						'container_class' => 'collapse navbar-collapse',
+						'container_id'    => 'bs-example-navbar-collapse-1',
+						'menu_class'      => 'navbar-nav mr-auto',
+						'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+						'walker'          => new WP_Bootstrap_Navwalker(),
+					) );
+				
+					?>
+            </div>
+        </div>
 	</nav>
-	<?php 
-/*  SHOW ON MOBILE RESOLUTION */
-   wp_nav_menu( array(
-	'theme_location' => 'top-menu-global-page',
-	'menu_id'        => 'mobile-demo',
-	'menu_class'        => 'sidenav',
-	) );
-	?>
 </header>
-
-
-
- 
- <div class="main" style="min-height:400px;">
+ <div class="main">

@@ -1,7 +1,14 @@
-body {
-    background-color: green;
-    height: 100%;
-}
-nav{
-    width: 100%;
-}
+
+/* 
+  USING CSS LIBRARY  LOCALY
+*/
+@import './materialize/materialize.scss';
+
+
+/* 
+ USING LIBRARY FROM NODE_MODULES
+ !NOTICE -  register js into /functions/theme/theme-script.php file
+
+ @import "./bootstrap/variables";
+ @import "node_modules/bootstrap/scss/bootstrap";
+*/
