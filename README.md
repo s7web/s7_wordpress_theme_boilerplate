@@ -26,10 +26,10 @@
    |  |- customizer/
    |  |- metaboxes/
    |  |- plugins/
-   |  |- plugins/
    |  |- posttypes/
    |  |- tgm/
    |  |- class-kirki-installer-section.php
+   |  |- class-wp-bootstrap-navwalker.php
    |- includes/
    |- template-parts/
    |- function.php
@@ -44,19 +44,19 @@
   
       ``` npm run dev ```
       
-      this command will  compile  all js and sass file directly into the folder dist
+      this command will  compile  all js and sass file directly into  ***dist/*** folder
   
   *  Prepare for production: 
    
      ``` npm run production ```
 
-     this command wil bind and minify all files js and sass files
+     this command wil bind and minify all files js and sass files.
 
 
 
 ### STYLES: 
   * in the file  ```/assets/sass/app.scss``` include other scss files that you want to be compailed on fronted.
-  * for customize dashboard style include scss files in ```/ assets/sass/dashboard.scss``` file
+  * for customize dashboard style include scss files in ```/ assets/sass/dashboard.scss``` file.
   
   ***You have three options how to include css library:*** 
   1) CDN :
@@ -74,7 +74,7 @@
       ***Notice!***
 
        * Don't forget to register JS for choosen css library in the file  ```/functions/themes/theme-script.php``` 
-       *  2 and 3 points are more appropriate for customize library
+       *  2 and 3 items are more appropriate for customize library
        example: 
        https://getbootstrap.com/docs/4.0/getting-started/theming/
 
@@ -89,10 +89,17 @@
 
 ##################################################
 
+
+
+## Nav Walekr menu
+ Help us with a means to traverse tree-like data structures for the purpose of rendering HTML.
+
+Register Naw Walker menu in file: ```/inc/class-wp-bootstrap-navwalker.php```
+
 Bootstrap 4.4.1
 Popper.js 1.16.0
 
-## Nav Walekr menu
+***Call wp_nav_menu() and pass it a new instance of the custom Walker child class.***
 ```
 wp_nav_menu( array(
     'theme_location'  => 'primary',
