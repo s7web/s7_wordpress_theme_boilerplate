@@ -68,7 +68,7 @@
       First you have to install library: ```npm install bootstrap```  and include it in file
    ```/assets/sass/app.scss``` or ```/assets/sass/dashboard.scss``` . 
    1) Use  Locally: 
-      You can see example in folder  ```/assets/sass/materialize/``` 
+      You can see example in folder  ```/assets/sass/vendors/materialize/``` 
      
 
       ***Notice!***
