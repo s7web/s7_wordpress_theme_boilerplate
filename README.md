@@ -79,10 +79,20 @@
        https://getbootstrap.com/docs/4.0/getting-started/theming/
 
 ### SCRIPTS: 
- * import all your frontend scripts into ```/assets/js/theme/indes.js``` and , scripts for dashboard import  into  ```/assets/js/admin/indes.js``` file
+ * import all your frontend scripts into ```/assets/js/frontend.js``` and , scripts for dashboard import  into  ```/assets/js/dashboard.js``` file. This scripts are global
+ * ***load specific script on specific page:***
+  
+   Create file into the ``` /assets/js/``` folder with prefix ```page-``` and rest of the name will be the same as page link. 
+
+   e.g.
+  page url: ```/contact-us```  name of file will be: ```/assets/js/page-contact-us.js```
 
     All those scripts will be compiled into ```/dist/js/admin-bind.js```  and ```/dist/js/frontend-bind.js``` 
 
+   The function responsible for this functionality:
+
+    ``` /functions/helpers/helpers.php   getScriptByPage(){}```
+    
    ***REGISTER NEW LIBRARIES:***
   *  Frontend:  ``` /functions/admin/admin-script.php```
   *  Dashboard:  ``` /functions/admin/admin-script.php```
