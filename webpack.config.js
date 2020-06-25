@@ -6,21 +6,26 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // include the css extraction and minification plugins
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const assets = glob.sync('./assets/*/*.*');
+let entries =  assets.reduce(function(obj, el){
+         
+  let elObj = path.parse(el);
+
+  if(elObj.base !== 'app.scss'  && elObj.base !=='dashboard.scss') {
+
+    obj[elObj.name] = [el];
+
+  }
+  return obj;
+},{})
+
+ entries.frontend.push('./assets/sass/app.scss');
+ entries.admin.push('./assets/sass/dashboard.scss');
 
 module.exports = {
-/*    entry: {
-    frontend: ['./assets/js/theme/index.js', './assets/sass/app.scss'],
-    admin: ['./assets/js/admin/index.js', './assets/sass/dashboard.scss'],
-    app : glob.sync('./assets/js/theme/pages/**.js')
-   
-  },  */ 
-    entry:glob.sync('./assets/js/**.js').reduce(function(obj, el){
 
-    obj[path.parse(el).name] = el;
-    return obj
- },{}),  
+  entry: entries,
   output: {
- 
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name]-build.js',
   },
