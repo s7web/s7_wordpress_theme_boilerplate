@@ -33,6 +33,8 @@ function load_css(){
     //enqueue registerd styles
    
     wp_enqueue_style( 'customcss' );
+   
+    
 }
 
 add_action('wp_enqueue_scripts', 'load_css');

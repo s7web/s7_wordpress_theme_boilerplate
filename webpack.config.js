@@ -1,5 +1,5 @@
 const path = require('path');
-
+const glob = require('glob');
 // include the js minification plugin
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
@@ -8,10 +8,17 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
-  entry: {
+/*    entry: {
     frontend: ['./assets/js/theme/index.js', './assets/sass/app.scss'],
-    admin: ['./assets/js/admin/index.js', './assets/sass/dashboard.scss']
-  },
+    admin: ['./assets/js/admin/index.js', './assets/sass/dashboard.scss'],
+    app : glob.sync('./assets/js/theme/pages/**.js')
+   
+  },  */ 
+    entry:glob.sync('./assets/js/**.js').reduce(function(obj, el){
+
+    obj[path.parse(el).name] = el;
+    return obj
+ },{}),  
   output: {
  
     path: path.resolve(__dirname, 'dist'),

@@ -51,3 +51,26 @@ function s7_get_media_field($fieldName) {
 
     return $media_url;
 }
+/* 
+  THIS FUNCTION AUTOMATICLLY INCLUDE SCRIPT ON THE SPECIFIC PAGE
+   in assets/js create script with prefix 'page-'  and call file as link of page
+   e.g.   url: /contact-us  , file name : page-contact-us.js 
+  */ 
+function getScriptByPage() {
+    $dir    = get_template_directory() .'/dist/js';
+
+    $files = scandir($dir);
+   foreach($files as $file) {
+    if(preg_match("/^page-(.+)-build\.js$/", $file, $reg))  { 
+        $page_name = $reg[1]; // substr($file, 0, -9);
+      
+        if(is_page($page_name)) {
+
+            wp_register_script( $page_name.'-script',    get_template_directory_uri() . '/dist/js/'.$file, array( 'jquery' ), '1.0.0', TRUE );
+            wp_enqueue_script( $page_name.'-script');
+       
+      }
+    }
+   }
+
+}

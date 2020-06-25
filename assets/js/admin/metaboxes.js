@@ -1,3 +1,4 @@
+
 jQuery(function($){
     /*
      * Select/Upload image(s) event

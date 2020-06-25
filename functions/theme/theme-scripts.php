@@ -21,6 +21,7 @@ function load_js(){
     wp_enqueue_script( 'materializejs');
    
 
+
     /*************
      * BOOTSTRAP
      ************/
@@ -36,6 +37,12 @@ function load_js(){
     //enqueue registered scripts
 
     wp_enqueue_script( 's7design-customjs');
+
+
+   // THIS FUNCTION AUTOMATICLLY INCLUDE SCRIPT ON THE SPECIFIC PAGE
+   // in assets/js create script with prefix 'page-'  and call file as link of page
+   //  e.g.   url: /contact-us  , file name : page-contact-us.js   
+    getScriptByPage(); // helpers/helpers.php
 }
 
 add_action('wp_enqueue_scripts', 'load_js');
