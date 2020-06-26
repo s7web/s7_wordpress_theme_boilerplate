@@ -63,14 +63,14 @@ function getScriptByPage() {
    foreach($files as $file) {
     if(preg_match("/^page-(.+)-build\.js$/", $file, $reg))  { 
         $page_name = $reg[1]; // substr($file, 0, -9);
-      
+       
         if(is_page($page_name)) {
-
-            wp_register_script( $page_name.'-script',    get_template_directory_uri() . '/dist/js/'.$file, array( 'jquery' ), '1.0.0', TRUE );
+    
+            wp_register_script( $page_name.'-script',    get_template_directory_uri() . '/dist/js/'.$file, array( ), '1.0.0', TRUE );
             wp_enqueue_script( $page_name.'-script');
        
       }
     }
    }
-
+//die();
 }

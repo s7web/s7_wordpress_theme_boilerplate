@@ -1,11 +1,16 @@
 const path = require('path');
 const glob = require('glob');
+
 // include the js minification plugin
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 // include the css extraction and minification plugins
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+const PATHS = {
+  src: path.join(__dirname, 'assets')
+}
 const assets = glob.sync('./assets/*/*.*');
 let entries =  assets.reduce(function(obj, el){
          
@@ -53,6 +58,9 @@ module.exports = {
     // extract css into dedicated file
     new MiniCssExtractPlugin({
       filename: '/css/[name].min.css'
+    }),
+    new PurgecssPlugin({
+      paths: glob.sync(path.join(__dirname, '.php')),
     })
   ],
   optimization: {

@@ -43,6 +43,21 @@ function load_js(){
    // in assets/js create script with prefix 'page-'  and call file as link of page
    //  e.g.   url: /contact-us  , file name : page-contact-us.js   
     getScriptByPage(); // helpers/helpers.php
+    
+
+    //disable default jquery
+    if(!is_admin()) {
+      wp_deregister_script('jquery');
+      wp_deregister_script('wp-embed');
+     // wp_deregister_script('wp-emoji-release');
+     remove_action( 'wp_head', 'print_emoji_detection_script', 7 ); 
+     remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    
+      // disable gutemberg style on front - optional
+    // wp_dequeue_style( 'wp-block-library' ); // WordPress core
+    // wp_dequeue_style( 'wp-block-library-theme' ); // WordPress core
+    }
+    
 }
 
 add_action('wp_enqueue_scripts', 'load_js');
