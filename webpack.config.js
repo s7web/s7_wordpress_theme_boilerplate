@@ -59,9 +59,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '/css/[name].min.css'
     }),
-    new PurgecssPlugin({
-      paths: glob.sync(path.join(__dirname, '.php')),
-    })
+    // new PurgecssPlugin({
+    //   paths: glob.sync(path.join(__dirname, '.php')),
+    // })
   ],
   optimization: {
     minimizer: [
