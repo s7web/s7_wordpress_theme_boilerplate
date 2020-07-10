@@ -14,13 +14,14 @@ include_once  get_template_directory() . '/functions/theme/theme-styles.php';
 include_once  get_template_directory() . '/functions/theme/theme-scripts.php';
 
 
-
-
 /* 
- Auto-install and activate necessery plugins
+ Auto-install and activate necessery plugins 
 */
+/* 
 require_once( get_template_directory() . '/inc/tgm/class-tgm-plugin-activation.php' );
 require_once( get_template_directory() . '/inc/tgm/plugins.php' );
+ */
+
 
 /* ACTIVATE KIRKI PLUGIN FOR CUSTOMIZER FIELDS */
 require_once( get_template_directory() . '/inc/class-kirki-installer-section.php' );
@@ -35,4 +36,5 @@ require_once get_template_directory() . '/inc/customizer/header-panel.php';
 /*  META BOX FIELDS */
 require_once get_template_directory() . '/inc/metaboxes/repeater-fields.php';
 require_once get_template_directory() . '/inc/metaboxes/upload-media-example.php';
+/*  */
 //require_once get_template_directory() . '/inc/metaboxes/upload-image-example.php';

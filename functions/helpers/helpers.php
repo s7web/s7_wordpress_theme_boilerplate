@@ -1,4 +1,3 @@
-
 <?php
 /*
  * S7design sanitize checkbox function
