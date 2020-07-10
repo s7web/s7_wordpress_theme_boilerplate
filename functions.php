@@ -36,5 +36,8 @@ require_once get_template_directory() . '/inc/customizer/header-panel.php';
 /*  META BOX FIELDS */
 require_once get_template_directory() . '/inc/metaboxes/repeater-fields.php';
 require_once get_template_directory() . '/inc/metaboxes/upload-media-example.php';
-/*  */
+
+/* 
+ * Jovana had a conflict with this function when she installed "Contact Form 7" plugin.   
+*/
 //require_once get_template_directory() . '/inc/metaboxes/upload-image-example.php';
