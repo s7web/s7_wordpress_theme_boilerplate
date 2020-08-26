@@ -43,7 +43,7 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ['babel-preset-env']
+            presets: ['@babel/preset-env'] //Changed this line to use version 7
          }
         }
       },
