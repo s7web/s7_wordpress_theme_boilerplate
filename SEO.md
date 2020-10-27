@@ -15,10 +15,10 @@
 ## Open Graph meta tags
 More about this can be found on: https://ogp.me/
 
-`og:title` - title of the object 
-`og:type` - type of object
-`og:url` - cannonical url of the object
-`og:image` - link to an image of the object
+`og:title` - title of the object  
+`og:type` - type of object  
+`og:url` - cannonical url of the object  
+`og:image` - link to an image of the object  
 
 ## Twitter cards 
 Used mainly for twitter, but when added can be displayed on some other social networks as well (Slack, etc). https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started
@@ -36,12 +36,16 @@ Used mainly for twitter, but when added can be displayed on some other social ne
 
 ## Facebook Pixel Code
 https://www.facebook.com/business/help/952192354843755?id=1205376682832142
+
 https://www.youtube.com/watch?v=nTr7EJBms8o
 
 ## Schema Markup
 Google search results with enriched markup such as images, rating, additional data than can be made using schema.org
 
 https://schema.org/docs/schemas.html
+
+WordPress has its own plugin which does this for you (pro version has much more options):
+https://wordpress.org/plugins/schema/
 
 ## Image Optimization
 https://tinypng.com/ 
